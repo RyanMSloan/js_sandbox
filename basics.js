@@ -173,7 +173,7 @@ objectMath = Math.floor(Math.random() * 100 + 1);
 console.log(objectMath);
 
 ///////////////////////////////////////////////////
-// Lecture 9
+// Lecture 10
 console.log('\n ---- Lecture 10 - String methods/concats ----\n');
 
 const firstName = 'James';
@@ -203,7 +203,7 @@ let escapeVal = 'That\'s awesome, I can\'t wait!';
 console.log(escapeVal);
 
 // String properties and methods
-console.log('\n- String properties and methods');
+console.log('\n- MORE String properties and methods');
 // Length
 let string1 = firstName.length;
 
@@ -244,8 +244,39 @@ string1 = str.replace('Ryan', 'Bob');
 string1 = str.includes('Hell');
 console.log(string1);
 
+///////////////////////////////////////////////////
+// Lecture 11
+console.log('\n ---- Lecture 11 - Template Literals ----\n');
+console.log('See document page ^');
 
+const templateName = 'Jeffrey';
+const templateAge = 40;
+const templateJob = 'Web Developer';
+const templateCity = 'San Diego';
 
+let intro = document.getElementById('template');
 
+// Without template literals (es5)
+intro.innerHTML = '<ul><li>'+templateName+'</li>'+
+                  '<li>'+templateAge+'</li>'+
+                  '<li>'+templateJob+'</li>'+
+                  '<li>'+templateCity+'</li>';
 
+// With template literals (es6)
+function hello(){
+  return 'HELLO';
+}
 
+intro.innerHTML = `<ul>
+                    <li>Name: ${templateName}</li>
+                    <li>Age: ${templateAge}</li>
+                    <li>Job: ${templateJob}</li>
+                    <li>City: ${templateCity}</li>
+                    <li>2 + 2 = ${2+2}</li>
+                    <li>From a function: ${hello()}</li>
+                    <li>Under 40? ${templateAge < 40 ? 'under 40' : '40 or older'}</li>
+                  </ul>`;
+
+///////////////////////////////////////////////////
+// Lecture 12
+console.log('\n ---- Lecture 12 - Arrays ----\n');
