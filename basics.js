@@ -4,7 +4,7 @@
 
 ///////////////////////////////////////////////////
 // Lecture 6
-console.log('\nLecture 6\n');
+console.log('\n---- Lecture 6 - Console Log Funcs ----\n');
 console.log('Hello');
 console.log(123);
 console.log(true);
@@ -49,10 +49,10 @@ console.log(numbers);
 
 ///////////////////////////////////////////////////
 // Lecture 7
-console.log('\n ---- Lecture 7 ----\n');
+console.log('\n ---- Lecture 7 - Prim/Ref Types ----\n');
 
 // PRIMITIVE TYPES
-console.log('\nPRIMITIVE TYPES typeof');
+console.log('\n- PRIMITIVE TYPES typeof');
 
 const name = 'John Doe';
 console.log(typeof name);
@@ -66,7 +66,7 @@ let transgender;
 console.log(typeof transgender);
 
 // REFERENCE TYPES - Objects
-console.log('\nPRIMITIVE TYPES typeof');
+console.log('\n- REFERENCE TYPES typeof');
 // Array
 const hobbies = ['motocross', 'gaming'];
 console.log(typeof hobbies);
@@ -84,8 +84,7 @@ console.log(typeof today);
 
 ///////////////////////////////////////////////////
 // Lecture 8
-console.log('\n ---- Lecture 8 ----\n');
-console.log(' - Type Conversion');
+console.log('\n ---- Lecture 8 - Type Conversion ----\n');
 
 let val;
 
@@ -126,7 +125,7 @@ console.log(typeof val);
 //console.log(val.length); // strings only
 console.log(val.toFixed(2)); // numbers [can mod values with params.  decimal->(2)]
 
-console.log('\n - Type Coercion');
+console.log('\n- Type Coercion');
 
 // Type coercion 
 const val1 = String(5);
@@ -135,4 +134,118 @@ const sum = val1 + val2;
 
 console.log(sum);
 console.log(typeof sum);
+
+///////////////////////////////////////////////////
+// Lecture 9
+console.log('\n ---- Lecture 9 - Math Operators ----\n');
+
+const num1 = 100;
+const num2 = 40;
+
+// Simple math with number
+console.log('- Simple math with number');
+let simpleMath;
+
+simpleMath = num1 + num2;
+simpleMath = num1 - num2;
+simpleMath = num1 * num2;
+simpleMath = num1 / num2;
+simpleMath = num1 % num2
+console.log(simpleMath);
+
+console.log('\n- Math Objects');
+let objectMath;
+ 
+objectMath = Math.PI;
+objectMath = Math.E;
+objectMath = Math.round(2.4);
+objectMath = Math.ceil(2.4);
+objectMath = Math.floor(2.7);
+objectMath = Math.sqrt(1024);
+objectMath = Math.pow(16, 3); //(root, power)
+objectMath = Math.cos(1/2);
+objectMath = Math.abs(-5);
+objectMath = Math.min(43,32,61,26,75,25);
+objectMath = Math.max(43,32,61,26,75,25);
+objectMath = Math.random();
+
+objectMath = Math.floor(Math.random() * 100 + 1);
+console.log(objectMath);
+
+///////////////////////////////////////////////////
+// Lecture 9
+console.log('\n ---- Lecture 10 - String methods/concats ----\n');
+
+const firstName = 'James';
+const lastName = 'William';
+const age1 = 36;
+const str = 'Hello there, my name is Ryan.';
+const tags = 'JavaScript,PHP,MongoDB,MySQL,C++';
+
+// Concatenation
+console.log('- Concatenation');
+let concatVal;
+
+concatVal = firstName + lastName;
+concatVal = firstName + ' ' + lastName;
+concatVal = 'Hi, my name is ' + firstName + ' and I am ' + age1;
+console.log(concatVal);
+
+// Append
+console.log('\n- Append');
+let appendVal = 'Ryan ';
+appendVal += 'Sloan';
+console.log(appendVal);
+
+// Escaping
+console.log('\n- Escaping');
+let escapeVal = 'That\'s awesome, I can\'t wait!';
+console.log(escapeVal);
+
+// String properties and methods
+console.log('\n- String properties and methods');
+// Length
+let string1 = firstName.length;
+
+// concat
+string1 = firstName.concat(' ', lastName);
+
+// Case change
+string1 = firstName.toUpperCase();
+string1 = firstName.toLocaleLowerCase();
+
+// string as ro array
+string1 = firstName[0];
+
+// indexOf
+string1 = lastName.indexOf('l');
+string1 = lastName.lastIndexOf('a');
+
+// charAt
+string1 = lastName.charAt(1);
+// get last char
+string1 = lastName.charAt(lastName.length - 1);
+
+// substring
+string1 = firstName.substr(1, 3);
+
+// slice
+string1 = firstName.slice(0, 4);
+string1 = firstName.slice(-3);
+
+// Split
+string1 = str.split(' ');
+string1 = tags.split(',');
+
+// replace
+string1 = str.replace('Ryan', 'Bob');
+
+// includes
+string1 = str.includes('Hell');
+console.log(string1);
+
+
+
+
+
 
