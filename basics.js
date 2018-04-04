@@ -2,6 +2,24 @@
 // Logging to console
 ////////////////////////
 
+/*                         Line #
+Variables                  - 24
+Data Types                 - 69
+Type Conversion            - 104
+Numbers & Math obj         - 157
+String Methods & concat    - 194
+Template Literals          - 266
+Array & Array Methods      - 299
+Object Literals            - 359
+Date & Times               -
+If & Comparison Operators  -
+Switches                   -
+Function Dev & Expressions -
+General Loops              -
+The Window Object          -
+Block Scope w/ let & const -
+*/
+
 ///////////////////////////////////////////////////
 // Lecture 6
 console.log('\n---- Lecture 6 - Console Log Funcs ----\n');
@@ -280,3 +298,63 @@ intro.innerHTML = `<ul>
 ///////////////////////////////////////////////////
 // Lecture 12
 console.log('\n ---- Lecture 12 - Arrays ----\n');
+
+const numbers1 = [12,34,51,5];
+const numbers2 = new Array(23,42,424,45);
+const fruit = ['Apple', 'Orange', 'Pear'];
+const mixed = [22, 'Hello', true, undefined, null, {a:1, b:2}, new Date()];
+
+let arrayVal;
+
+// Get array length
+arrayVal = numbers1.length;
+// Check if is array
+arrayVal = Array.isArray(mixed);
+// Get single val from Array
+arrayVal = fruit[1];
+// Insert into Array
+numbers1[3] = 999;
+// Find index of value
+arrayVal = numbers1.indexOf(999);
+
+// MUTATING ARRAYS
+// Add on to END
+// numbers1.push(250);
+// // Add on to BEGINNING
+// numbers1.unshift(123);
+// // Take off from end
+// numbers1.pop();
+// // Take off from beginning
+// numbers1.shift();
+// // Splice values
+// numbers1.splice(1, 2);
+// // Reverse
+// numbers1.reverse();
+
+// Concatenate Arrays
+arrayVal = numbers1.concat(numbers2);
+
+// Sorting
+arrayVal = fruit.sort();
+arrayVal = numbers1.sort(); // doesnt work as expected
+// to sort numbers correctly, use the "compare function"
+arrayVal = numbers1.sort(function(x, y){
+  return x - y;
+});
+// Reverse sort
+arrayVal = numbers1.sort(function(x, y){
+  return y - x;
+});
+
+// Find
+function under50(num){
+  return num < 50;
+}
+arrayVal = numbers1.find(under50);
+
+console.log(numbers1);
+console.log(arrayVal);
+
+///////////////////////////////////////////////////
+// Lecture 13
+console.log('\n ---- Lecture 13 - Object Literals ----\n');
