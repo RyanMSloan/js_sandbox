@@ -12,7 +12,7 @@ Template Literals          - 266
 Array & Array Methods      - 299
 Object Literals            - 359
 Date & Times               - 405
-If & Comparison Operators  -
+If & Comparison Operators  - 434
 Switches                   -
 Function Dev & Expressions -
 General Loops              -
@@ -405,7 +405,34 @@ people.forEach(person => {
 // Lecture 14
 console.log('\n ---- Lecture 14 - Date & Times ----\n');
 
+let dateVal;
 
+const date = new Date();
+let birthday = new Date('7-17-1981 11:25:00');
+birthday = new Date('7/17/1981 11:59:00');
+
+dateVal = birthday;
+dateVal = date.getDate();
+dateVal = date.getDay();
+dateVal = date.getFullYear();
+dateVal = date.getHours();
+dateVal = date.getMinutes();
+dateVal = date.getSeconds();
+dateVal = date.getMilliseconds();
+dateVal = date.getTime(); // how many seconds passed since some date. good for timestamp?
+console.log(dateVal);
+
+birthday.setMonth(0);
+birthday.setDate(1);
+birthday.setFullYear(0000);
+birthday.setHours(0);
+birthday.setMinutes(0);
+birthday.setSeconds(01);
+console.log(birthday);
+
+///////////////////////////////////////////////////
+// Lecture 15
+console.log('\n ---- Lecture 15 - If & Comparison Operators ----\n');
 
 
 
