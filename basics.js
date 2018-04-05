@@ -433,7 +433,103 @@ console.log(birthday);
 ///////////////////////////////////////////////////
 // Lecture 15
 console.log('\n ---- Lecture 15 - If & Comparison Operators ----\n');
+// if(something){
+//   do something
+// } else{
+//   do something else
+// }
 
+const id = 100;
+
+// // EQUAL TO
+// if (id == 100) {
+//   console.log('YEP'); 
+// }else{
+//   console.log('NOPE');
+// }
+
+// // NOT EQUAL TO
+// if (id != 101) {
+//   console.log('YEP'); 
+// }else{
+//   console.log('NOPE');
+// }
+
+// // EQUAL TO VALUE AND TYPE
+// if (id === 101) {
+//   console.log('YEP'); 
+// }else{
+//   console.log('NOPE');
+// }
+
+// // NOT EQUAL TO VALUE AND TYPE
+// if (id !== 100) {
+//   console.log('YEP'); 
+// }else{
+//   console.log('NOPE');
+// }
+
+// test if undefined
+if(typeof id !== 'undefined'){
+  console.log(`The ID is ${id}`)
+}else{
+  console.log('NO ID');
+}
+
+// GREATER OR LESS THAN
+if (id >= 100) {
+  console.log('YEP'); 
+}else{
+  console.log('NOPE');
+}
+
+
+// ELSE IF()
+const color = 'blue';
+
+if (color === 'red') {
+  console.log('Color is red');
+}else if(color === 'green'){
+  console.log('Color is green');
+}else{
+  console.log('Color is neither red or green. It must be '+color);
+}
+
+// LOGIC OPERATORS
+const logName = 'Steve';
+const logAge = 16;
+
+// AND &&
+if(logAge > 0 && logAge <= 12){
+  console.log(`${logName} is a child`);
+} else if(logAge > 12 && logAge < 21){
+  console.log(`${logName} is a juvenile`);
+} else {
+  console.log(`${logName} is an adult`);
+}
+
+// OR ||
+if (logAge < 16 || logAge > 65){
+  console.log(`${logName} can not run in the Boston Marathon`);
+} else {
+  console.log(`${logName} is within the age restrictions to complete in the Boston Marathon`);
+}
+
+// TERNARY OPERATOR
+console.log(id === 100 ? 'TRUE' : 'FALSE');
+
+// Can do single line condition with NO BRACES
+if(id === 100)
+  console.log('TRUE - id === '+id);
+else
+  console.log('id does not === 100');
+
+///////////////////////////////////////////////////
+// Lecture 16
+console.log('\n ---- Lecture 16 - Switches ----\n');
+
+
+  
 
 
 
