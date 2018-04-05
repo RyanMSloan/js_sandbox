@@ -11,7 +11,7 @@ String Methods & concat    - 194
 Template Literals          - 266
 Array & Array Methods      - 299
 Object Literals            - 359
-Date & Times               -
+Date & Times               - 405
 If & Comparison Operators  -
 Switches                   -
 Function Dev & Expressions -
@@ -358,3 +358,92 @@ console.log(arrayVal);
 ///////////////////////////////////////////////////
 // Lecture 13
 console.log('\n ---- Lecture 13 - Object Literals ----\n');
+
+// Standard Object
+const person2 = {
+  firstName: 'Steve',
+  lastName: 'Smith',
+  age: 36,
+  email: 'blah@goo.com',
+  hobbies: ['MX', 'Gaming', 'Hiking', 'Web Dev'],
+  address: {
+    city: 'Portland',
+    state: 'ME'
+  },
+  getBirthYear: function(){
+    let dateObj = new Date();
+    return dateObj.getFullYear() - this.age;
+  }
+}
+
+let objVal;
+
+objVal = person2.email;
+// good for arrays - Math.ceil(Math.random() * person2.hobbies.length - 1)
+objVal = person2.hobbies[Math.ceil(Math.random() * person2.hobbies.length - 1)];
+objVal = person2.address.city;
+console.log(objVal);
+
+// Array of Objects
+const people = [
+  {name: 'Phillip'},
+  {name: 'Bob'},
+  {name: 'Jill'},
+  {name: 'Jessica'}
+]
+console.log(people);
+// for (let i = 0; i < people.length; i++) {
+//   console.log(people[i].name);
+// }
+
+people.forEach(person => {
+  console.log(person.name);
+  
+});
+
+///////////////////////////////////////////////////
+// Lecture 14
+console.log('\n ---- Lecture 14 - Date & Times ----\n');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                FOR FUN
+//////////////////////////////////////////////////////
+// Fibonacci Fun
+console.log('\n\n\n\n');
+
+console.time('fib');
+let fibString = '';
+for(var i = 1; i < 10; i++){
+  fibString += fib(i) + ' ';
+}
+
+function fib(n){
+  if (n<2) {
+    return n;
+  }
+  return fib(n-1) + fib(n-2);
+}
+
+const test = document.getElementById('test');
+test.innerHTML = fibString;
+console.timeEnd('fib');
