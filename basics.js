@@ -616,6 +616,77 @@ todo.delete();
 // Lecture 18
 console.log('\n ---- Lecture 18 - Loops ----\n');
 
+// FOR LOOP
+for (let i = 1; i <= 30; i++) {
+  if(i === 2){
+    console.log('2 is my favorite number!');
+    continue;
+  }
+  if(i === 5){
+    console.log('Stop the loop');
+    console.log('\n\n');
+    break;
+  }
+  console.log('Number ' + i);
+}
+
+// WHILE LOOP
+let j = 0;
+
+while(j < 10){
+  console.log('Number ' + j);
+  j++;
+}
+
+console.log('\n\n');
+
+// DO WHILE LOOP
+let k = 0;
+do{
+  console.log('Number ' + k);
+  k++;
+}
+while(k < 10);
+
+console.log('\n\n');
+
+// LOOPING ARRAYs
+const cars = ['Ford','Chevy','Honda','Mercedes'];
+// for(i = 0; i < cars.length; i++){
+//   console.log(cars[i]);  
+// }
+// FOREACH
+cars.forEach(car => {
+  console.log(car);
+});
+
+// MAP
+const users = [
+  {id: 1, name: 'John'},
+  {id: 2, name: 'Sara'},
+  {id: 3, name: 'Jamie'}
+];
+
+const ids = users.map(user => {
+  return user.id;
+});
+
+console.log(ids);
+console.log('\n\n');
+
+// FOR IN LOOP
+const loopUser = {
+  firstName: 'John',
+  lastName: 'Dii',
+  age: 40
+}
+
+for(let x in loopUser){
+  console.log(`${x} : ${loopUser[x]}`);
+}
+
+
+
 
 
 
@@ -627,6 +698,7 @@ console.log('\n ---- Lecture 18 - Loops ----\n');
 
 //                FOR FUN
 //////////////////////////////////////////////////////
+
 // Fibonacci Fun
 console.log('\n\n\n\n');
 
@@ -643,6 +715,17 @@ function fib(n){
   return fib(n-1) + fib(n-2);
 }
 
-const test = document.getElementById('test');
-test.innerHTML = fibString;
+const test = document.getElementById('test').innerHTML = fibString;
 console.timeEnd('fib');
+
+// FIZZBUZZ
+for (let i = 1; i <= 10; i++) {
+  if(i % 3 === 0 && i % 5 ===0)
+    console.log('FizzBuzz');
+  else if(i % 3 === 0)
+    console.log('Fizz');
+  else if(i % 5 === 0)
+    console.log('Buzz');
+  else
+    console.log(i);
+}
