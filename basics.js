@@ -13,9 +13,9 @@ Array & Array Methods      - 299
 Object Literals            - 359
 Date & Times               - 405
 If & Comparison Operators  - 434
-Switches                   -
-Function Dev & Expressions -
-General Loops              -
+Switches                   - 528
+Function Dec & Expressions - 568
+General Loops              - 616
 The Window Object          -
 Block Scope w/ let & const -
 */
@@ -528,17 +528,93 @@ else
 // Lecture 16
 console.log('\n ---- Lecture 16 - Switches ----\n');
 
+const sColor = 'yellow';
 
-  
+switch(sColor){
+  case 'red':
+    console.log('The color is red!');
+    break;
+  case 'green':
+    console.log('The color is blue!');
+    break;
+  case 'blue':
+    console.log('The color is blue!');
+    break;
+  default:
+    console.log('I\'m not smart enough to know your color...');
+    break;
+}
+
+// 2 Line way...
+const weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+console.log(`Today is ${weekdays[new Date().getDay()]}`);
+
+switch(new Date().getDay()){
+  case 5:
+    console.log('Yay its Friday!');
+    break;
+  case 6:
+    console.log('Yay its Saterday!!');
+    break;
+  case 0:
+    console.log('Go to church and repent your weekends sins');
+    break;    
+  default:
+    console.log('Who cares what day it is, its not the weekend... :(');
+    break;
+}
+
+///////////////////////////////////////////////////
+// Lecture 17
+console.log('\n ---- Lecture 17 - Function Dec & Expressions ----\n');
+
+// FUNCTION DECLARATION
+function greet(fName='John', lName='Doe'){
+  //console.log('Hello');
+  return 'Hello, '+fName+ ' ' +lName;
+}
+
+console.log(greet());
+
+// FUNCTION EXPRESSIONS
+const square = function(x=1){
+  return x * x;
+};
+
+console.log(square(32));
 
 
+// IMMIDIATLEY INVOKABLE FUNCTIONS EXPRESSIONS - IIFEs
 
+// (function(){
+//   console.log('IIFE Run...');
+// })();
 
+(function(name){
+  console.log('IIFE Run...'+name);
+})('Ryan');
 
+// PROPERTY METHOS
+const todo = {
+  add: function(){
+    console.log('Add TODO');
+  },
+  edit: function(id){
+    console.log('Edit TODO with id '+id);
+  }
+}
 
+todo.delete = function(){
+  console.log('Delete TODO...');
+}
 
+todo.add();
+todo.edit(12345);
+todo.delete();
 
-
+///////////////////////////////////////////////////
+// Lecture 18
+console.log('\n ---- Lecture 18 - Loops ----\n');
 
 
 
