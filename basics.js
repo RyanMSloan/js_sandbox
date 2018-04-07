@@ -16,8 +16,8 @@ If & Comparison Operators  - 434
 Switches                   - 528
 Function Dec & Expressions - 568
 General Loops              - 616
-The Window Object          -
-Block Scope w/ let & const -
+The Window Object          - 689
+Block Scope w/ let & const - 749
 */
 
 ///////////////////////////////////////////////////
@@ -685,8 +685,94 @@ for(let x in loopUser){
   console.log(`${x} : ${loopUser[x]}`);
 }
 
+///////////////////////////////////////////////////
+// Lecture 19
+console.log('\n ---- Lecture 19 - The Window Object ----\n');
 
+// WINDOW / OBJECTS / PROPERTIES
+//window.console.log(123);
 
+// Alert
+// window.alert('Hello World');
+
+// Promt
+// let input = prompt();
+// alert(input);
+
+// Confirm
+// if(confirm('Are you sure?')){
+//   console.log('ok');
+// } else {
+//   console.log('canceled')
+// }
+
+let winVal;
+
+// Outer width and height
+winVal = window.outerHeight;
+winVal = window.outerWidth;
+winVal = window.innerHeight;
+winVal = window.innerWidth;
+
+// Scroll points
+winVal = window.scrollY;
+
+// Location Object
+winVal = window.location;
+winVal = window.location.hostname;
+winVal = window.location.port;
+winVal = window.location.href;
+winVal = window.location.search;
+
+// Redirect
+// window.location.href = 'http://google.com';
+// Reload
+// window.location.reload();
+
+// History Object
+// window.history.go(-1); // goes back to last url
+winVal = window.history.length;
+
+// Navigator Object
+winVal = window.navigator;
+winVal = window.navigator.geolocation;
+winVal = window.navigator.appName;
+winVal = window.navigator.appVersion;
+winVal = window.navigator.userAgent;
+winVal = window.navigator.platform;
+winVal = window.navigator.vendor;
+winVal = window.navigator.language;
+
+console.log(winVal);
+
+///////////////////////////////////////////////////
+// Lecture 20
+console.log('\n ---- Lecture 20 - Scope ----\n');
+
+// Global Scope
+var a = 1;
+let b = 2;
+const c = 3;
+
+// Function Scope
+// function test1(){
+//   var a = 4;
+//   let b = 5;
+//   const c = 6;
+//   console.log('Function scope: ' + a, b, c);
+// }
+// test1();
+
+// Block Scope
+if(true){
+  var a = 4;
+  let b = 5;
+  const c = 6;
+  console.log('Block scope: ' + a, b, c);
+}
+
+// Global Scope
+console.log('Global scope: ' + a, b, c);
 
 
 
