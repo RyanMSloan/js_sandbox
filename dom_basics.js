@@ -134,63 +134,152 @@
 ////////////////////////////////////////////////////////////
 // Lecture 25 - Traversing the DOM
 
-let val;
+// let val;
 
-const list = document.querySelector('ul.collection');
-const listItem = document.querySelector('li.collection-item:first-child');
+// const list = document.querySelector('ul.collection');
+// const listItem = document.querySelector('li.collection-item:first-child');
 
-val = listItem;
-val = list;
+// val = listItem;
+// val = list;
 
-// Get ALL (text even) child nodes
-val = list.childNodes;
-console.log(val);
-val = list.childNodes[0];
-val = list.childNodes[0].nodeName;
-val = list.childNodes[1].nodeType;
-// 1 = Element
-// 2 = Attribute (deprecated)
-// 3 = Text Node
-// 8 = Comment
-// 9 = Document itself
-// 10 = Doctype
+// // Get ALL (text even) child nodes
+// val = list.childNodes;
+// console.log(val);
+// val = list.childNodes[0];
+// val = list.childNodes[0].nodeName;
+// val = list.childNodes[1].nodeType;
+// // 1 = Element
+// // 2 = Attribute (deprecated)
+// // 3 = Text Node
+// // 8 = Comment
+// // 9 = Document itself
+// // 10 = Doctype
 
-// Get element Children nodes only
-val = list.children;
-val = list.children[1];
-list.children[1].textContent = 'Hello';
+// // Get element Children nodes only
+// val = list.children;
+// val = list.children[1];
+// list.children[1].textContent = 'Hello';
 
-// Children of children
-list.children[3].children[0].id = 'test-link';
-val = list.children[3].children[0];
+// // Children of children
+// list.children[3].children[0].id = 'test-link';
+// val = list.children[3].children[0];
 
-// First Child
-val = list.firstChild; // also list text nodes. simular to .childNodes
-val = list.firstElementChild; // get only the element nodes
-// Last Child
-val = list.lastChild; // also list text nodes. simular to .childNodes
-val = list.lastElementChild; // get only the element nodes
+// // First Child
+// val = list.firstChild; // also list text nodes. simular to .childNodes
+// val = list.firstElementChild; // get only the element nodes
+// // Last Child
+// val = list.lastChild; // also list text nodes. simular to .childNodes
+// val = list.lastElementChild; // get only the element nodes
 
-// Count child elements
-val = list.childElementCount;
+// // Count child elements
+// val = list.childElementCount;
 
-// get Parent node
-val = listItem.parentNode;
-val = listItem.parentElement;
+// // get Parent node
+// val = listItem.parentNode;
+// val = listItem.parentElement;
 
-// get Parent of Parent
-val = listItem.parentElement.parentElement;
+// // get Parent of Parent
+// val = listItem.parentElement.parentElement;
 
-// get next sibling
-val = listItem.parentElement.nextSibling;
-val = listItem.parentElement.nextElementSibling;
+// // get next sibling
+// val = listItem.parentElement.nextSibling;
+// val = listItem.parentElement.nextElementSibling;
 
-// get previous sibling
-val = listItem.parentElement.previousSibling;
-val = listItem.parentElement.previousElementSibling;
+// // get previous sibling
+// val = listItem.parentElement.previousSibling;
+// val = listItem.parentElement.previousElementSibling;
 
 
 
-console.log(val);
+// console.log(val);
 
  
+////////////////////////////////////////////////////////////
+// Lecture 26 - Creating Elements
+
+// Create the element
+const li = document.createElement('li');
+// Add Class
+li.className = 'collection-item';
+// Add id
+//li.id = 'new-item';
+// Set Attribute
+li.setAttribute('title', 'New Item');
+// Create text and append
+li.appendChild(document.createTextNode('Hello World!'));
+//li.innerHTML = 'Hello Again World';
+
+// Create new link item
+const link = document.createElement('a');
+// Add Class
+link.className = 'delete-item secondary-content';
+// Add icon HTML
+link.innerHTML = '<i class="fa fa-remove"></i>';
+// Append link into li
+li.appendChild(link);
+
+
+// Append li as child to ul
+document.querySelector('ul.collection').appendChild(li);
+
+//console.log(li);
+
+
+////////////////////////////////////////////////////////////
+// Lecture 27 - Removing and replacing Elements
+
+// REPLACE ELEMENT
+// Create element
+const newHeading = document.createElement('h2');
+// Add id
+newHeading.id = 'task-title';
+// Add text node
+newHeading.appendChild(document.createTextNode('Task List'));
+//console.log(newHeading);
+
+// Get old heading
+const oldHeading = document.getElementById('task-title');
+// Parent
+const cardAction = document.querySelector('.card-action');
+
+// Replace
+cardAction.replaceChild(newHeading, oldHeading);
+
+
+// REMOVE ELEMENT
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+// Remove the list
+lis[0].remove();
+
+// Remove by child element
+list.removeChild(lis[3]);
+
+// Classes and Attr
+const firstLi = document.querySelector('li:first-child');
+const liLink = firstLi.children[0];
+//console.log(firstLi.children[0]);
+
+let val;
+
+// Classes
+val = liLink.className;
+val = liLink.classList;
+val = liLink.classList[0];
+
+// Add a class to current
+liLink.classList.add('test');
+liLink.classList.remove('test');
+val = liLink;
+
+// Attributes
+val = liLink.getAttribute('href');
+val = liLink.setAttribute('href', 'basics_index.html');
+liLink.setAttribute('title', 'basics');
+val = liLink.hasAttribute('title');
+console.log(val);
+liLink.removeAttribute('title');
+val = liLink;
+
+console.log(val);
