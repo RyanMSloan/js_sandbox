@@ -189,97 +189,249 @@
 // val = listItem.parentElement.previousSibling;
 // val = listItem.parentElement.previousElementSibling;
 
-
-
 // console.log(val);
 
  
 ////////////////////////////////////////////////////////////
 // Lecture 26 - Creating Elements
 
-// Create the element
-const li = document.createElement('li');
-// Add Class
-li.className = 'collection-item';
-// Add id
-//li.id = 'new-item';
-// Set Attribute
-li.setAttribute('title', 'New Item');
-// Create text and append
-li.appendChild(document.createTextNode('Hello World!'));
-//li.innerHTML = 'Hello Again World';
+// // Create the element
+// const li = document.createElement('li');
+// // Add Class
+// li.className = 'collection-item';
+// // Add id
+// //li.id = 'new-item';
+// // Set Attribute
+// li.setAttribute('title', 'New Item');
+// // Create text and append
+// li.appendChild(document.createTextNode('Hello World!'));
+// //li.innerHTML = 'Hello Again World';
 
-// Create new link item
-const link = document.createElement('a');
-// Add Class
-link.className = 'delete-item secondary-content';
-// Add icon HTML
-link.innerHTML = '<i class="fa fa-remove"></i>';
-// Append link into li
-li.appendChild(link);
+// // Create new link item
+// const link = document.createElement('a');
+// // Add Class
+// link.className = 'delete-item secondary-content';
+// // Add icon HTML
+// link.innerHTML = '<i class="fa fa-remove"></i>';
+// // Append link into li
+// li.appendChild(link);
 
 
-// Append li as child to ul
-document.querySelector('ul.collection').appendChild(li);
+// // Append li as child to ul
+// document.querySelector('ul.collection').appendChild(li);
 
-//console.log(li);
+// //console.log(li);
 
 
 ////////////////////////////////////////////////////////////
 // Lecture 27 - Removing and replacing Elements
 
-// REPLACE ELEMENT
-// Create element
-const newHeading = document.createElement('h2');
-// Add id
-newHeading.id = 'task-title';
-// Add text node
-newHeading.appendChild(document.createTextNode('Task List'));
-//console.log(newHeading);
+// // REPLACE ELEMENT
+// // Create element
+// const newHeading = document.createElement('h2');
+// // Add id
+// newHeading.id = 'task-title';
+// // Add text node
+// newHeading.appendChild(document.createTextNode('Task List'));
+// //console.log(newHeading);
 
-// Get old heading
-const oldHeading = document.getElementById('task-title');
-// Parent
-const cardAction = document.querySelector('.card-action');
+// // Get old heading
+// const oldHeading = document.getElementById('task-title');
+// // Parent
+// const cardAction = document.querySelector('.card-action');
 
-// Replace
-cardAction.replaceChild(newHeading, oldHeading);
+// // Replace
+// cardAction.replaceChild(newHeading, oldHeading);
 
 
-// REMOVE ELEMENT
-const lis = document.querySelectorAll('li');
-const list = document.querySelector('ul');
+// // REMOVE ELEMENT
+// const lis = document.querySelectorAll('li');
+// const list = document.querySelector('ul');
 
-// Remove the list
-lis[0].remove();
+// // Remove the list
+// lis[0].remove();
 
-// Remove by child element
-list.removeChild(lis[3]);
+// // Remove by child element
+// list.removeChild(lis[3]);
 
-// Classes and Attr
-const firstLi = document.querySelector('li:first-child');
-const liLink = firstLi.children[0];
-//console.log(firstLi.children[0]);
+// // Classes and Attr
+// const firstLi = document.querySelector('li:first-child');
+// const liLink = firstLi.children[0];
+// //console.log(firstLi.children[0]);
 
-let val;
+// let val;
 
-// Classes
-val = liLink.className;
-val = liLink.classList;
-val = liLink.classList[0];
+// // Classes
+// val = liLink.className;
+// val = liLink.classList;
+// val = liLink.classList[0];
 
-// Add a class to current
-liLink.classList.add('test');
-liLink.classList.remove('test');
-val = liLink;
+// // Add a class to current
+// liLink.classList.add('test');
+// liLink.classList.remove('test');
+// val = liLink;
 
-// Attributes
-val = liLink.getAttribute('href');
-val = liLink.setAttribute('href', 'basics_index.html');
-liLink.setAttribute('title', 'basics');
-val = liLink.hasAttribute('title');
-console.log(val);
-liLink.removeAttribute('title');
-val = liLink;
+// // Attributes
+// val = liLink.getAttribute('href');
+// val = liLink.setAttribute('href', 'basics_index.html');
+// liLink.setAttribute('title', 'basics');
+// val = liLink.hasAttribute('title');
+// console.log(val);
+// liLink.removeAttribute('title');
+// val = liLink;
 
-console.log(val);
+// console.log(val);
+
+
+////////////////////////////////////////////////////////////
+// Lecture 28 - Event Listeners & The Event Object
+
+// document.querySelector('.clear-tasks').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   console.log('You Clicked the clear task button.');
+// });
+
+// document.querySelector('.clear-tasks').addEventListener('click', onClick);
+
+// function onClick(e) {
+//   e.preventDefault();
+
+//   let val;
+
+//   val = e;
+
+//   // Event Target Element
+//   val = e.target;
+//   val = e.target.id;
+//   val = e.target.className;
+//   val = e.target.classList;
+
+//   e.target.innerText = 'Processing...';
+
+//   // Event Type
+//   val = e.type;
+
+//   // TimeStamp
+//   val = e.timeStamp;
+
+//   // Coords event relative to the window
+//   val = 'X ' + e.clientX + ' : Y ' + e.clientY;
+
+//   // Coords event relative to the window
+//   val = 'X ' + e.offsetX + ' : Y ' + e.offsetY;
+
+//   console.log(val);
+// }
+
+////////////////////////////////////////////////////////////
+// Lecture 29 - Mouse Events
+
+// const clearBtn = document.querySelector('.clear-tasks');
+// const card = document.querySelector('.card');
+// const heading = document.querySelector('h5');
+
+// // Click
+// clearBtn.addEventListener('click', runEvent);
+
+// // Double Click
+// clearBtn.addEventListener('dblclick', runEvent);
+
+// // Mouse Down
+// clearBtn.addEventListener('mousedown', runEvent);
+// // Mouse Up
+// clearBtn.addEventListener('mouseup', runEvent);
+
+// // Mouse Enter
+// card.addEventListener('mouseenter', runEvent);
+// // Mouse Leave
+// card.addEventListener('mouseleave', runEvent);
+
+// // Mouse Over
+// card.addEventListener('mouseover', runEvent);
+// // Mouse Out
+// card.addEventListener('mouseout', runEvent);
+
+// // Mouse Move
+// card.addEventListener('mousemove', runEvent);
+
+// // Event Handler
+// function runEvent(e) {
+//   console.log(`EVENT TYPE: ${e.type}`);
+
+//   heading.textContent = `Mouse X: ${e.offsetX} - Mouse Y: ${e.offsetY}`;
+
+//   document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+
+// }
+
+
+////////////////////////////////////////////////////////////
+// Lecture 30 - Keyboard and input events
+
+// const form = document.querySelector('form');
+// const taskInput = document.getElementById('task');
+// const heading = document.querySelector('h5');
+// // const select = document.querySelector('select');
+// // Clear Input
+// taskInput.value = '';
+
+// form.addEventListener('submit', runEvent);
+
+// // Keydown
+// taskInput.addEventListener('keydown', runEvent);
+// // Keyup
+// taskInput.addEventListener('keyup', runEvent);
+// // Keypress
+// taskInput.addEventListener('keypress', runEvent);
+// // Focus
+
+// taskInput.addEventListener('focus', runEvent);
+// // Blur
+// taskInput.addEventListener('blur', runEvent);
+
+// // Copy
+// taskInput.addEventListener('copy', runEvent);
+// // Cut
+// taskInput.addEventListener('cut', runEvent);
+// // Paste
+// taskInput.addEventListener('paste', runEvent);
+// // Input
+// taskInput.addEventListener('input', runEvent);
+
+// // Change Event
+// select.addEventListener('change', runEvent);
+
+
+
+// function runEvent(e) {
+//   console.log(`EVENT TYPE: ${e.type}`);
+
+  //console.log(e.target.value);
+
+  // heading.innerText = e.target.value;
+
+  // // Get Form Input Value
+  // console.log(taskInput.value);
+  // e.preventDefault();
+// }
+
+
+////////////////////////////////////////////////////////////
+// Lecture 31 - Event Bubbling and Delegation
+
+// // EVENT BUBBLING
+// document.querySelector('.card-title').addEventListener('click', () => {
+//   console.log('card title');
+// });
+// document.querySelector('.card-content').addEventListener('click', () => {
+//   console.log('card content');
+// });
+// document.querySelector('.card').addEventListener('click', () => {
+//   console.log('card');
+// });
+// document.querySelector('.col').addEventListener('click', () => {
+//   console.log('col');
+// });
+
+// EVENT DELEGATION
+
