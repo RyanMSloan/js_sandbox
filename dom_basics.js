@@ -434,4 +434,58 @@
 // });
 
 // EVENT DELEGATION
+// document.body.addEventListener('click', runEvent);
+
+// function runEvent(e) {
+//   if(e.target.parentElement.classList.contains('delete-item')) {
+//     console.log('Delete Item');
+
+//     e.target.parentElement.parentElement.remove();
+//   }
+// }
+
+
+////////////////////////////////////////////////////////////
+// Lecture 32 - Local & session storage
+
+// // Set localStorage
+//const tasksArr = ['Take a Poo', 'Make Coffee', 'Eat Lunch'];
+//localStorage.setItem('tasks', JSON.stringify(tasksArr));
+
+// // Get localStorage
+// const tasksArr = JSON.parse(localStorage.getItem('tasks'));
+// tasksArr.forEach(task => {
+//   console.log(task);
+// });
+
+// Add to local storage via form subit
+document.querySelector('form').addEventListener('submit', addTask);
+
+function addTask(e) {
+  // Get input
+  const task = document.getElementById('task').value;
+
+  // Pull local storage, if any
+  let tasksArr;
+  if(localStorage.getItem('tasks') === null) {
+    tasksArr = [];
+  } else {
+    tasksArr = JSON.parse(localStorage.getItem('tasks'));
+  }
+  
+  // Push new task onto tasksArr
+  tasksArr.push(task);
+
+  // Now set into/back to localStorage
+  localStorage.setItem('tasks', JSON.stringify(tasksArr));
+
+  e.preventDefault();
+}
+
+if(localStorage.getItem('tasks') !== null) {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks.forEach(task => {
+    console.log(task);
+  });
+}
 
