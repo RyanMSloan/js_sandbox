@@ -2,6 +2,11 @@
   LOAN CALC
 */
 
+// years dropdown settings and run
+const minYears = 1;
+const maxYears = 30;
+document.addEventListener('DOMContentLoaded', populateYears);
+
 // Listen for submit
 document.getElementById('loan-form').addEventListener('submit', calculateInput);
 
@@ -11,8 +16,6 @@ function calculateInput(e) {
   const amountIn = e.target.amount.value;
   const interestIn = e.target.interest.value;
   const yearsIn = e.target.years.value;
-  
-  // // testing
   // console.log(e.target.amount);
 
   // result elements
@@ -21,23 +24,90 @@ function calculateInput(e) {
   const totalInterest = document.getElementById('total-interest');
 
   // validate inputs
-  // ....
-
-  // calculate and pass to post
-  const principal = parseFloat(amountIn);
-  const annualInterest = parseFloat(interestIn) / 100 / 12;
-  const totalMonths = parseFloat(yearsIn) * 12;
-  // calculate monthly payments
-  const x = Math.pow(1 + annualInterest, totalMonths);
-  const monthly = (principal * x * annualInterest)/(x - 1);
-
-  if (isFinite(monthly)) {
-    monthlyPayment.value = monthly.toFixed(2);
-    totalPayment.value = (monthly * totalMonths).toFixed(2);
-    totalInterest.value = ((monthly * totalMonths) - principal).toFixed(2);
+  /*
+  * TODO:
+  * - pass input element to showAlert
+  */ 
+  if(amountIn.length === 0 || amountIn <= 0) {
+    showAlert('Enter amount you wish to borrow.')
+  } else if(interestIn.length === 0 || interestIn <= 0) {
+    showAlert('Enter desired loan interest rate.')
+  } else if(isNaN(yearsIn) || yearsIn <= 0) {
+    showAlert('Select loan length.')
   } else {
-    console.log('ERROR');
+    // clear any error still on screen
+    if(document.querySelector('.alert')) {
+      clearAlert();
+    }
+    // calculate and pass to post
+    const principal = parseFloat(amountIn);
+    const annualInterest = parseFloat(interestIn) / 100 / 12;
+    const totalMonths = parseFloat(yearsIn) * 12;
+    // calculate monthly payments
+    const x = Math.pow(1 + annualInterest, totalMonths);
+    const monthly = (principal * x * annualInterest)/(x - 1);
+
+    if (isFinite(monthly)) {
+      monthlyPayment.value = monthly.toFixed(2);
+      totalPayment.value = (monthly * totalMonths).toFixed(2);
+      totalInterest.value = ((monthly * totalMonths) - principal).toFixed(2);
+    } else {
+      console.log('ERROR');
+    }
   }
 
   e.preventDefault();
+}
+
+
+
+// helper functions
+///////////////////////////////////////////////////
+// fill dropdown list
+function populateYears() {
+  const yearDropDown = document.getElementById('years');
+  
+  // create option element loop and append
+  for(let i = minYears; i <= maxYears; i++) {
+    const yearOpt = document.createElement('option');
+    yearOpt.value = i;
+    yearOpt.innerText = i;
+    yearDropDown.appendChild(yearOpt);
+  }
+}
+
+
+// missing/incorrect input value error handle
+// validate inputs
+  /*
+  * TODO:
+  * - accept input element and change background color on err
+  * - find a better location for error so the page doesnt jump when messege clears
+  */
+function showAlert(message) {
+  // check if alert still persists
+  if(document.querySelector('.alert')) {
+    document.querySelector('.alert').remove();
+  }
+
+  // get elements to insert alert
+  const card = document.querySelector('.card');
+  const heading = document.querySelector('.heading');
+
+  // create div
+  const errAlert = document.createElement('div');
+  errAlert.className = 'alert alert-danger';
+  //errAlert.innerHTML = message;
+  errAlert.appendChild(document.createTextNode(message));
+
+  // insert on card and before heading
+  card.insertBefore(errAlert, heading);
+
+  // alert clears after 3 seconds
+  setTimeout(clearAlert, 3000);
+}
+
+// Alert clear
+function clearAlert() {
+  document.querySelector('.alert').remove();
 }
