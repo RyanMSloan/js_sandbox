@@ -8,7 +8,16 @@ const maxYears = 30;
 document.addEventListener('DOMContentLoaded', populateYears);
 
 // Listen for submit
-document.getElementById('loan-form').addEventListener('submit', calculateInput);
+document.getElementById('loan-form').addEventListener('submit', (e) => {
+  // Hide results
+  document.getElementById('results').style.display = 'none';
+
+  // Show loader
+  document.getElementById('loading').style.display = 'block';
+  setTimeout(() => {calculateInput(e)}, 2000);
+
+  e.preventDefault();
+});
 
 
 function calculateInput(e) {
@@ -30,10 +39,13 @@ function calculateInput(e) {
   */ 
   if(amountIn.length === 0 || amountIn <= 0) {
     showAlert('Enter amount you wish to borrow.')
+    clearResults();
   } else if(interestIn.length === 0 || interestIn <= 0) {
     showAlert('Enter desired loan interest rate.')
+    clearResults();
   } else if(isNaN(yearsIn) || yearsIn <= 0) {
     showAlert('Select loan length.')
+    clearResults();
   } else {
     // clear any error still on screen
     if(document.querySelector('.alert')) {
@@ -51,14 +63,16 @@ function calculateInput(e) {
       monthlyPayment.value = monthly.toFixed(2);
       totalPayment.value = (monthly * totalMonths).toFixed(2);
       totalInterest.value = ((monthly * totalMonths) - principal).toFixed(2);
+
+      // Show results
+      document.getElementById('results').style.display = 'block';
+      // Hide loading
+      document.getElementById('loading').style.display = 'none';
     } else {
       console.log('ERROR');
     }
   }
-
-  e.preventDefault();
 }
-
 
 
 // helper functions
@@ -93,6 +107,7 @@ function showAlert(message) {
   // get elements to insert alert
   const card = document.querySelector('.card');
   const heading = document.querySelector('.heading');
+  const loading = document.getElementById('loading');
 
   // create div
   const errAlert = document.createElement('div');
@@ -101,13 +116,23 @@ function showAlert(message) {
   errAlert.appendChild(document.createTextNode(message));
 
   // insert on card and before heading
-  card.insertBefore(errAlert, heading);
-
+  card.insertBefore(errAlert, loading);
+  
   // alert clears after 3 seconds
-  setTimeout(clearAlert, 3000);
+  setTimeout(clearAlert, 5000);
 }
+
 
 // Alert clear
 function clearAlert() {
   document.querySelector('.alert').remove();
+}
+
+
+// Clear results pane
+function clearResults() {
+  // Show results
+  document.getElementById('results').style.display = 'none';
+  // Hide loading
+  document.getElementById('loading').style.display = 'none';
 }
