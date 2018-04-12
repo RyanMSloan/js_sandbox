@@ -1,3 +1,4 @@
+/////////////////////////////////////////
 // Book Constructor
 function Book(title, author, isbn) {
   this.title = title;
@@ -5,6 +6,7 @@ function Book(title, author, isbn) {
   this.isbn = isbn;
 }
 
+/////////////////////////////////////////
 // UI Constructor
 function UI() {}
 // Adds a book to the list
@@ -22,6 +24,23 @@ UI.prototype.addBookToList = (book) => {
   // Append to list
   list.appendChild(row);
 }
+// Show Alert
+UI.prototype.showAlert = (message, className) => {
+  // Create a div
+  const alert = document.createElement('div');
+  alert.className = `alert ${className}`;
+  alert.appendChild(document.createTextNode(message));
+
+  // Insert
+  const container = document.querySelector('.container');
+  const form = document.getElementById('book-form');
+
+  container.insertBefore(alert, form);
+  // remove after 3 seconds
+  setTimeout(() => {
+    document.querySelector('.alert').remove();
+  }, 3000);
+}
 // Clear Fields
 UI.prototype.clearFields = () => {
   document.getElementById('title').value = '';
@@ -30,7 +49,7 @@ UI.prototype.clearFields = () => {
 }
 
 
-
+/////////////////////////////////////////
 // Event Listeners
 document.getElementById('book-form').addEventListener('submit', (e) => {
   // get form values
@@ -43,11 +62,18 @@ document.getElementById('book-form').addEventListener('submit', (e) => {
   // Instantiate UI
   const ui = new UI();
   
-  // Add book to list
-  ui.addBookToList(book);
-  // Clear fields
-  ui.clearFields(title, author, isbn);
-
+  // Validate
+  if(title === '') {
+    ui.showAlert('Title field is required.', 'error');
+  } else {
+    // Add book to list
+    ui.addBookToList(book);
+    // Alert success
+    ui.showAlert('Book added.', 'success');
+    // Clear fields
+    ui.clearFields(title, author, isbn);
+  }
+  
   //console.log(title, author, isbn);
   //console.log(book);
   e.preventDefault();
