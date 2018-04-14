@@ -6,25 +6,25 @@ const http = new EzHttp();
 
 ////////////////// REQUESTS //////////////////////
 // GET Posts
-// http.get('https://jsonplaceholder.typicode.com/posts', callbackRes);
+http.get('https://jsonplaceholder.typicode.com/posts', cbResponse);
 
 // GET single Post
-// http.get('https://jsonplaceholder.typicode.com/posts/34', callbackRes);
+// http.get('https://jsonplaceholder.typicode.com/posts/34', cbResponse);
 
 // POST a new Post
-// http.post('https://jsonplaceholder.typicode.com/posts', postData, callbackRes);
+// http.post('https://jsonplaceholder.typicode.com/posts', postData, cbResponse);
 
 // PUT - update a post
-// http.put('https://jsonplaceholder.typicode.com/posts/1', postData, callbackRes);
+// http.put('https://jsonplaceholder.typicode.com/posts/1', postData, cbResponse);
 
 // DELETE a post
-http.delete('https://jsonplaceholder.typicode.com/posts/1', callbackRes);
+// http.delete('https://jsonplaceholder.typicode.com/posts/1', cbResponse);
 
 
 
 ////////////////// RESPONSES //////////////////////
 // GET response
-function callbackRes(err, response) {
+function cbResponse(err, response) {
   if(!err) {
     console.log(response);  
   } else {

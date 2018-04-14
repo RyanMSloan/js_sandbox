@@ -3,11 +3,51 @@ const posts = [
   {author: 'Phil', post: 'This is post Two'}
 ];
 
-function createPost(post, callback) {
-  setTimeout(function() {
-    posts.push(post)
-    callback();
-  }, 2000);
+/**
+ * ES5 callback
+ * 
+ */
+// function createPost(post, callback) {
+//   setTimeout(function() {
+//     posts.push(post)
+//     callback();
+//   }, 2000);
+// }
+
+
+// function getPosts() {
+//   setTimeout(function() {
+//     let output = '';
+//     posts.forEach(post => {
+//       output += `<li>${post.post}</li>`;
+//     });
+//     document.body.innerHTML = output;
+//   }, 1000);
+// }
+
+
+// createPost({author: 'Beth', post: 'This is post Three'}, getPosts);
+// //getPosts();
+
+/**
+ * ES6 Promises
+ * 
+ */
+function createPost(post) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      posts.push(post);
+      
+      // testing error
+      let error = false;
+      if(!error) {
+        resolve();
+      } else {
+        reject('Error: Something went wrong!');
+      }
+
+    }, 2000);
+  });
 }
 
 
@@ -22,6 +62,8 @@ function getPosts() {
 }
 
 
-createPost({author: 'Beth', post: 'This is post Three'}, getPosts);
+function errHandle(err) {
+  console.log(err);
+}
 
-//getPosts();
+createPost({author: 'Beth', post: 'This is post Three'}).then(getPosts).catch(errHandle);
