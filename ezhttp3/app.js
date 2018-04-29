@@ -9,9 +9,9 @@ const tempData = {
 const http = new EzHttp;
 
 // Get All users
-// http.get('https://jsonplaceholder.typicode.com/users')
-//     .then(users => showData(users))
-//     .catch(err => console.log(err));
+http.get('http://localhost:3000/api/posts')
+    .then(posts => showData(posts))
+    .catch(err => console.log(err));
 
 // Post a new user
 // http.post('https://jsonplaceholder.typicode.com/users', tempData)
@@ -24,9 +24,9 @@ const http = new EzHttp;
 //     .catch(err => console.log(err));
 
 // Delete a user
-http.delete('https://jsonplaceholder.typicode.com/users/2')
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+// http.delete('https://jsonplaceholder.typicode.com/users/2')
+//     .then(res => console.log(res))
+//     .catch(err => console.log(err));
 
 
 
@@ -49,12 +49,11 @@ function showData(dataIn) {
   dataIn.forEach(data => {
     dataOut += `
       <li>
-        ${data.name}<br>
-        Username: ${data.username}<br>
-        Email: ${data.email}<br>
-        Address: ${data.address.street} ${data.address.suite}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        ${data.address.city} ${data.address.zipcode}<br><br>
+        Post _id: ${data._id}<br>
+        Poster id: ${data.userId}<br>
+        Title: ${data.title}<br>
+        <span>${data.date}</span><br>
+        Body: ${data.body}
       </li>
     `;
   });
